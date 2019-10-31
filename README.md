@@ -195,6 +195,20 @@ struct ReceiptItem {
 ```
 
 a. Given the structs above, add a method to `Receipt` that returns the total cost of all items
+```
+struct Receipt {
+  let storeName: String
+  let items: [ReceiptItem]
+    
+    func totalCost() -> Double {
+        var total = Double()
+        for item in items {
+            total += item.price
+        }
+        return total
+    }
+}
+```
 
 b. Write a function that takes in an array of `Receipts` and returns an array of `Receipts` that match a given store name
 
@@ -310,9 +324,9 @@ struct BankAccount {
         balance -= amount
     }
     
-    mutating func totalGrowth(_ takeout: Double, _ putin: Double) {
-        balance = putin - takeout
-    }
+    mutating func totalGrowth(_ takeout: Double, _ putin: Double) -> Double {
+       return balance = putin - takeout
+        }
 }
 
 ```
@@ -397,7 +411,7 @@ library2.add(track: "Come As You Are")
 
 
 ```
-library 1 has = "Michelle", "Voodoo Child"
+library 1 has = "Michelle", "Voodoo Child"a
 library 2 has none because there is no identifier as library 
 
 
@@ -407,7 +421,19 @@ Make a function that takes in an array of strings and returns an array of string
 
 ```
 Input: ["Hello", "Alaska", "Dad", "Peace", "Power"]
+var line1: Set<Character> = ["q","w","e","r","t","u","i","o","p"]
+var line2: Set<Character> = ["a","s","d","f","g","h","j","k","l"]
+var line3: Set<Character> = ["z","x","c","v","b","n","m"]
+var inputAnswer = [String]()
 
+func sameLine (words: [String]) -> [String] {
+    for word in words {
+        if Set(word).isSubset(of: line1) || Set(word).isSubset(of: line1) || Set(word).isSubset(of: line1) {
+            inputAnswer.append(word)
+        }
+    }
+    return inputAnswer
+}
 
 Output: ["Alaska", "Dad", "Power"]
 ```
