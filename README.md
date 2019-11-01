@@ -122,14 +122,14 @@ Identify if there are 3 integers in the following array that sum to 10. If so, p
 
 ```swift
 var tripleSumArr = [-20,-14, -8,-5,-3,-2,1,2,3,4,9,15,20,30]
-var ansArr = [[Int]]()
-var ansInt = [Int]()
 
 func triplets (arr: [Int]) -> [[Int]] {
+    var ansArr = [[Int]]()
     for num in arr {
         for num2 in arr {
             for num3 in arr {
                 if num + num2 + num3 == 10 {
+                    var ansInt = [Int]()
                     ansInt.append(num)
                     ansInt.append(num2)
                     ansInt.append(num3)
@@ -141,7 +141,7 @@ func triplets (arr: [Int]) -> [[Int]] {
      return ansArr
 }
     
-triplets(arr: tripleSumArr)
+print(triplets(arr: tripleSumArr))
 ```
 
 
@@ -183,23 +183,20 @@ var codeString = "aldfjaekwjnfaekjnf"
 ```
 var codeString = "aldfjaekwjnfaekjnf"
 var ansStr = String()
+var sortedValues = letterValues.sorted(by: {$0.value > $1.value})
 
-
-
-
-func answer (dict: [String: Int], str: String) -> String {
-    for (key, value) in dict {
+func answer (str: String) -> String {
+    for (key, value) in sortedValues {
         for char in str {
             if key == String(char) {
-                letterValues.sorted(by: {$0.value < $1.value})
                 ansStr += key
             }
         }
     }
-        return ansStr
+    return ansStr
 }
 
-answer(dict: letterValues, str: codeString)
+answer(str: codeString)
 ```
 
 
@@ -208,23 +205,20 @@ var codeStringTwo = "znwemnrfewpiqn"
 ```
 var codeStringTwo = "znwemnrfewpiqn"
 var ansStr = String()
+var sortedValues = letterValues.sorted(by: {$0.value < $1.value})
 
-
-
-
-func answer (dict: [String: Int], str: String) -> String {
-    for (key, value) in dict {
+func answer (str: String) -> String {
+    for (key, value) in sortedValues {
         for char in str {
             if key == String(char) {
-                letterValues.sorted(by: {$0.value > $1.value})
                 ansStr += key
             }
         }
     }
-        return ansStr
+    return ansStr
 }
 
-answer(dict: letterValues, str: codeStringTwo)
+answer(str: codeString)
 ```
 
 
