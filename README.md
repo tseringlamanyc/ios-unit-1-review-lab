@@ -1,4 +1,4 @@
-# Unit 1 Review Lab
+                                                                                                                                                                                                                                                                                                                            # Unit 1 Review Lab
 
 Before completing any of the review questions below, ensure that you have answered each question in the previous labs.
 
@@ -122,9 +122,26 @@ Identify if there are 3 integers in the following array that sum to 10. If so, p
 
 ```swift
 var tripleSumArr = [-20,-14, -8,-5,-3,-2,1,2,3,4,9,15,20,30]
+var ansArr = [[Int]]()
+var ansInt = [Int]()
 
-
-
+func triplets (arr: [Int]) -> [[Int]] {
+    for num in arr {
+        for num2 in arr {
+            for num3 in arr {
+                if num + num2 + num3 == 10 {
+                    ansInt.append(num)
+                    ansInt.append(num2)
+                    ansInt.append(num3)
+                    ansArr.append(ansInt)
+                }
+            }
+        }
+    }
+     return ansArr
+}
+    
+triplets(arr: tripleSumArr)
 ```
 
 
@@ -163,10 +180,52 @@ let letterValues = [
 
 a. Sort the string below in descending order according the dictionary letterValues
 var codeString = "aldfjaekwjnfaekjnf"
+```
+var codeString = "aldfjaekwjnfaekjnf"
+var ansStr = String()
+
+
+
+
+func answer (dict: [String: Int], str: String) -> String {
+    for (key, value) in dict {
+        for char in str {
+            if key == String(char) {
+                letterValues.sorted(by: {$0.value < $1.value})
+                ansStr += key
+            }
+        }
+    }
+        return ansStr
+}
+
+answer(dict: letterValues, str: codeString)
+```
 
 
 b. Sort the string below in ascending order according the dictionary letterValues
 var codeStringTwo = "znwemnrfewpiqn"
+```
+var codeStringTwo = "znwemnrfewpiqn"
+var ansStr = String()
+
+
+
+
+func answer (dict: [String: Int], str: String) -> String {
+    for (key, value) in dict {
+        for char in str {
+            if key == String(char) {
+                letterValues.sorted(by: {$0.value > $1.value})
+                ansStr += key
+            }
+        }
+    }
+        return ansStr
+}
+
+answer(dict: letterValues, str: codeStringTwo)
+```
 
 
 ## Question 4
@@ -176,6 +235,23 @@ Given an Array of Arrays of Ints, write a function that returns the Array of Int
 
 ```swift
 Input: [[2,4,1],[3,0],[9,3]]
+var largestsum = 0
+var sum = 0
+var ansInt = [Int]()
+
+
+func largestInt( arr: [[Int]]) -> [Int] {
+    for thing in arr {
+        largestsum = thing.reduce(0,+)
+        if sum < largestsum {
+            largestsum = sum
+            ansInt = thing
+        }
+    }
+    return ansInt
+}
+
+largestInt(arr: arr1)
 
 Output: [9,3]
 ```
@@ -428,7 +504,7 @@ var inputAnswer = [String]()
 
 func sameLine (words: [String]) -> [String] {
     for word in words {
-        if Set(word).isSubset(of: line1) || Set(word).isSubset(of: line1) || Set(word).isSubset(of: line1) {
+    if Set(word).lowercased()).isSubset(of: line1) || Set(word).lowercased()).isSubset(of: line1) || Set(word).lowercased()).isSubset(of: line1) {
             inputAnswer.append(word)
         }
     }
